@@ -1,0 +1,16 @@
+.snakemake/*
+*.err
+*.out
+*.log
+*.tmp
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+.DS_Store
+.vscode/
+.env
+.venv
+env/
+venv/

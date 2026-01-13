@@ -1,8 +1,23 @@
 # fails with python==3.12.1
 # works with python==3.10.13
+
+# CUDA compatibility: These versions are compatible with CUDA 12.1-12.4
+# System CUDA driver: 12.4 (from nvidia-smi on HAI cluster)
+tensorflow[and-cuda]>=2.16,<2.17  # Requires CUDA 12.3
+torch>=2.2.0,<2.3.0  # Requires CUDA 12.1, compatible with 12.4 driver
+torchvision>=0.17.0,<0.18.0
+
+# Core dependencies with version constraints for compatibility
+numpy>=1.23.5,<2.0.0  # Required by TensorFlow, m2stitch, and others
+jax==0.4.23  # basicpy requires an older version
+jaxlib==0.4.23  # older version for basicpy
+ml-dtypes>=0.3.1,<0.4.0  # Compatible with both TensorFlow 2.16 and JAX 0.4.23
+fsspec>=2022.8.0,<2023.9.0  # Required by aicsimageio
+networkx>=2.5.1,<3.0.0  # Required by m2stitch
+
+# Scientific computing and image processing
 scikit-image
 scipy
-numpy
 seaborn
 matplotlib
 dask
@@ -10,6 +25,7 @@ xarray
 pandas
 zarr
 tqdm
+typer
 simpleitk
 aicsimageio[nd2]
 trackpy
@@ -18,12 +34,12 @@ geopandas
 dask_image
 ome_zarr
 ipykernel
-basicpy
+basicpy<1.1.0
+hyperactive<4.0.0
 natsort
 anndata
-snakemake
-m2stitch @ git+https://github.com/yfukai/m2stitch.git #@fa3fd9919d568c47c132806d5b88353abcc79df2
-wsireg @ git+https://github.com/NHPatterson/wsireg.git #@5ad827cd05a63bda7129b875b5cb5220cd1b08ca # fails on 3.12.1
-jax==0.4.23 #basicpy requires an older version
-jaxlib=0.4.23 #older version for bascipy
+snakemake<8.0.0
+pulp<2.8.0
+m2stitch @ git+https://github.com/yfukai/m2stitch.git@fa3fd9919d568c47c132806d5b88353abcc79df2
+wsireg @ git+https://github.com/NHPatterson/wsireg.git@5ad827cd05a63bda7129b875b5cb5220cd1b08ca # fails on 3.12.1
 spotiflow @ git+https://www.github.com/weigertlab/spotiflow.git
